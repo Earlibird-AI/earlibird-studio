@@ -10,9 +10,12 @@
 <!-- VIBE:END -->
 
 <!-- SHOWCASE:BEGIN -->
-## This project
+## This project (for any AI assistant)
+
+**Full instructions are in `CLAUDE.md`. Follow them whichever AI tool you are** (Claude, Cursor, Codex, Copilot, Gemini…):
+they cover rebranding, adding videos, preview, publishing and the rules.
 
 The site is a plain HTML/CSS/JS showcase in `public/showcase/` (no React, no build step). `src/routes/index.tsx`
 redirects `/` to `/showcase/index.html`. Rebrand in `public/showcase/brand.js`, edit content in `public/showcase/data.js`, add videos with `scripts/add_video.py` (see CLAUDE.md); keep each media file under 25 MB.
-Only Earlibird-made examples belong here: no client recordings or names, and no third-party reference material.
+Only add videos the owner has the rights to: no client recordings or names without their OK, and no one else's footage or music.
 <!-- SHOWCASE:END -->

@@ -1,4 +1,4 @@
-# Instructions for Claude: make this video showcase someone's own
+# Instructions for Claude (or any AI assistant): make this video showcase someone's own
 
 This folder is a video styles showcase: a static website listing video **formats** (with example videos), brand **skins** (live previews) and **effects** (two reels with jump-to timestamps). It was built by Earlibird. The person who downloaded it wants their own version: rebranded for their business, with the formats they want and their own videos.
 
@@ -29,6 +29,7 @@ The whole site is `public/showcase/`: plain HTML, CSS and JavaScript, no build s
 - Use their video as a format's example: `python3 scripts/add_video.py my-videos/file.mp4 --replace <format-id>`
 - Add a second example to a format: `python3 scripts/add_video.py my-videos/file.mp4 --extra-of <format-id> --label "…"`
 - Remove a format: `python3 scripts/add_video.py --remove <format-id>`
+- The scripts need Python 3. On Windows, run them with `python` or `py` instead of `python3`. If Python is missing, install it: Mac `xcode-select --install` or `brew install python`; Windows `winget install Python.Python.3.12`.
 - The script needs ffmpeg. If it's missing, install it for them: `brew install ffmpeg` (Mac), `winget install ffmpeg` (Windows) or `sudo apt install ffmpeg` (Linux).
 - Card text lives in `public/showcase/data.js`. After adding videos, edit `line`, `good`, `bring`, `length`, `has` and `use` there. Allowed `has`: camera, voice, screens, brief, audio. Allowed `use`: social, youtube, sales, teach. Rename the filter labels in the `has` and `use` maps at the bottom of the file.
 - Format names and descriptions are free to rewrite. These styles are starting points, not fixed products.
