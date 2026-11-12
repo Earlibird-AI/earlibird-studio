@@ -35,3 +35,10 @@ src/tailwind.config.vibe.json
 # raw videos dropped in for scripts/add_video.py (compressed copies live in public/showcase/media)
 my-videos/*
 !my-videos/README.md
+
+# video system: local Python env, and footage/renders in the local workspace
+video-system/.venv/
+video-system/workspace/1. To edit/*
+video-system/workspace/2. Finished/*
+!video-system/workspace/*/.gitkeep
+__pycache__/

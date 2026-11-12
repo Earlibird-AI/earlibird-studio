@@ -1,0 +1,7 @@
+{
+  "_help": "Where your folders live. Relative paths are inside video-system/. Point these at your Google Drive folders (synced to your computer) to work straight from Drive.",
+  "to_edit": "workspace/1. To edit",
+  "finished": "workspace/2. Finished",
+  "whisper_model": "small",
+  "max_pause": 0.6
+}

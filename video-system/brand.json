@@ -1,0 +1,19 @@
+{
+  "_help": "Your brand for every video. Paths are relative to this folder. Colours are hex. caption_style: pill | karaoke | box | upper.",
+  "name": "Earlibird",
+  "website": "earlibird.ai",
+  "cta": "Book a free call",
+  "logo": "../public/showcase/media/brand/lockup-white.png",
+  "colors": {
+    "accent": "#F3D053",
+    "background": "#16171A",
+    "text": "#F4F1EA",
+    "dim": "#A3A39E"
+  },
+  "fonts": {
+    "headline": "fonts/poppins-800-normal.ttf",
+    "caption": "fonts/intertight-800-normal.ttf"
+  },
+  "caption_style": "pill",
+  "uppercase_titles": false
+}

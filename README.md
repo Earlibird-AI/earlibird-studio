@@ -1,32 +1,45 @@
-# Earlibird Video Styles
+# Earlibird Video Styles: starter kit
 
-A browsable showcase of Earlibird's video **formats**, **brand skins** and **effects**. Use it to pick a starting point for your own video, then copy a ready-to-fill brief.
+Everything you need to make videos like Earlibird's for your own business, with your AI assistant doing the heavy lifting:
+
+1. **The video system** (`video-system/`). Drop in raw footage, say **"edit [title]"**, and your AI:
+   - cuts the silences and retakes
+   - adds word-by-word captions in your brand, title and pop-up cards, and an end card with your call to action
+   - makes 16:9 and 9:16 versions, a thumbnail and caption files
+
+   Recipes for all 13 formats are included, from Clean talking-heads to sketch boards and sizzle reels.
+2. **The showcase page** (`public/showcase/`). A website of formats, brand skins and 114 effects. Rebrand it and fill it with your own videos.
 
 Every example was made by Earlibird. Sample numbers, names and businesses in the examples are illustrative.
 
-## Make it yours with Claude
+## Get started (after the event, about 15 minutes)
 
-1. Download this repo (**Code → Download ZIP** on GitHub) and unzip it.
-2. Put your own videos in the `my-videos/` folder.
-3. Open the folder in [Claude Code](https://claude.com/claude-code), or upload the zip to a Claude chat, and paste:
+**You need:**
+- an AI assistant that can work with files on your computer: the [Claude desktop app](https://claude.ai/download) (Code tab), Claude Code, Cursor, Codex, GitHub Copilot or Gemini CLI
+- a computer with a little free space
+
+1. Download this repo: on GitHub, **Code → Download ZIP**. No GitHub account is needed. Unzip it.
+2. Open the unzipped folder in your AI assistant.
+3. Paste this and answer its questions:
 
 ```
-Read CLAUDE.md in this folder, then make this video showcase mine.
+Read CLAUDE.md in this folder. Set up the video system for me, then make the showcase page mine.
 My business: [name, website, what we do]
-My brand: [logo file, main colour]
-Keep: [all formats / just the ones I list]
-My videos are in the my-videos folder: add them to the page.
+My brand: [logo file, colours]
+My footage folders: [Google Drive, or keep them in this folder]
 ```
 
-Prefer another AI? Any assistant that can read and edit files on your computer works: Cursor, Codex, GitHub Copilot or Gemini CLI. They read `AGENTS.md`, which points them to the same instructions. Chat-only assistants (ChatGPT or Claude in a browser) can edit `brand.js` and `data.js` for you, but you'll run the video script yourself.
+Your AI installs what's needed (asking first), sets up your brand, and checks everything works. After that, every video is: put the footage in **1. To edit/YYYY-MM-DD Title**, then say **"edit Title"**.
 
-Claude rebrands the page (`public/showcase/brand.js`), keeps the formats, skins and effects you want, and adds your videos with `scripts/add_video.py`. It compresses each video for the web, makes a poster and adds the card. `CLAUDE.md` has the full checklist.
+- The full guide for you: [video-system/START-HERE.md](video-system/START-HERE.md)
+- How each format is made: [video-system/FORMATS.md](video-system/FORMATS.md)
+- Instructions your AI follows: [CLAUDE.md](CLAUDE.md) (other AI tools read [AGENTS.md](AGENTS.md), which points to the same file)
 
-Want the whole workflow, from ideas to finished videos? Copy the [AI video system folder kit](https://drive.google.com/drive/folders/1b8i3hR3aMaPbKizJHUO4G5-n1r9eQ1oD) on Google Drive: folders, a step-by-step guide, Claude instructions and templates.
+Prefer Google Drive folders and templates too? Copy the [AI video system folder kit](https://drive.google.com/drive/folders/1b8i3hR3aMaPbKizJHUO4G5-n1r9eQ1oD).
 
 Earlibird's example videos, logo and footage are included as references. Credit Earlibird if you keep them on a page you publish, or swap in your own.
 
-## Look at it
+## Look at the showcase page
 
 - **Live site:** the AI Studio subdomain this repo is published to.
 - **On your computer:** clone or download this repo, then run:

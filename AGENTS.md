@@ -12,8 +12,9 @@
 <!-- SHOWCASE:BEGIN -->
 ## This project (for any AI assistant)
 
-**Full instructions are in `CLAUDE.md`. Follow them whichever AI tool you are** (Claude, Cursor, Codex, Copilot, Gemini…):
-they cover rebranding, adding videos, preview, publishing and the rules.
+**Full instructions are in `CLAUDE.md`. Follow them whichever AI tool you are** (Claude, Cursor, Codex, Copilot, Gemini…).
+This download has two parts: the **video system** (`video-system/`, turns raw footage into finished branded videos; start with
+`video-system/START-HERE.md`) and the **showcase page** (`public/showcase/`, rebrand it and add their videos).
 
 The site is a plain HTML/CSS/JS showcase in `public/showcase/` (no React, no build step). `src/routes/index.tsx`
 redirects `/` to `/showcase/index.html`. Rebrand in `public/showcase/brand.js`, edit content in `public/showcase/data.js`, add videos with `scripts/add_video.py` (see CLAUDE.md); keep each media file under 25 MB.

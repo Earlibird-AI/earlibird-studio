@@ -1,0 +1,9 @@
+Format: Clean
+Versions: 16:9 for YouTube, plus 9:16 for Reels
+Call to action: Book a free call at yourwebsite.com
+Must include: the customer result at the start
+Cut: the bit where I mention pricing
+Highlight: speed, enquiries, booked
+Pop-up numbers: 5 minutes, 21x
+Thumbnail text: Stop losing leads
+Notes: keep it under 3 minutes
