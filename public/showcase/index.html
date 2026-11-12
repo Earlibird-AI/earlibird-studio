@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Earlibird Video Styles</title>
+<meta name="description" content="Browse Earlibird's video formats, brand skins and effects, then pick your starting point.">
+<meta property="og:title" content="Earlibird Video Styles">
+<meta property="og:description" content="Browse Earlibird's video formats, brand skins and effects, then pick your starting point.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="media/sizzle-reel.jpg">
+<meta name="theme-color" content="#0E0F11">
+<link rel="icon" href="media/brand/icon-yellow.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@600&family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&family=Montserrat:wght@700;800;900&family=Poppins:wght@600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="#top" aria-label="Earlibird, back to top"><img src="media/brand/lockup-white.png" alt="earlibird" width="124" height="32"></a>
+  <nav class="nav" aria-label="Sections">
+    <a href="#formats">Formats</a><a href="#skins">Skins</a><a href="#effects">Effects</a><a href="#start">Start here</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero wrap">
+    <div class="eyebrow">Earlibird video styles</div>
+    <h1>Pick your <i>starting point</i></h1>
+    <p class="lede">Every example on this page was made with Earlibird's video kits. Browse the formats, try the brand skins, scrub through the effects, then save the ones you like and copy a ready-to-fill brief.</p>
+    <div class="stats"><span><b id="n-formats">13</b> formats</span><span><b id="n-skins">7</b> skins</span><span><b id="n-effects">114</b> effects</span></div>
+  </section>
+
+  <section id="formats" class="wrap block">
+    <div class="head">
+      <h2>Formats</h2>
+      <p>A format is the shape of the video: what's on screen, how it moves and how long it runs. Tell us what you've got and where it's going.</p>
+    </div>
+    <div class="picker" role="group" aria-label="Filter formats">
+      <div class="prow"><span class="plab">I have</span><div class="chips" id="f-has"></div></div>
+      <div class="prow"><span class="plab">It's for</span><div class="chips" id="f-use"></div></div>
+      <div class="prow"><span class="plab">Shape</span><div class="chips" id="f-aspect"></div>
+        <button class="chip ghost" id="f-saved" aria-pressed="false">★ Saved only</button>
+        <button class="linkbtn" id="f-reset" hidden>Clear filters</button>
+      </div>
+    </div>
+    <p class="count" id="f-count" aria-live="polite"></p>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section id="skins" class="wrap block">
+    <div class="head">
+      <h2>Skins</h2>
+      <p>A skin is the look you put on any format: colours, fonts, captions, cards and how things move. Same six seconds of footage, seven looks. Tap one to open it.</p>
+    </div>
+    <div class="over" id="over"></div>
+    <div class="tabs" id="tabs" role="tablist" aria-label="Skins"></div>
+    <div class="detail"><div class="dphone" id="dphone"></div><div class="info" id="info"></div></div>
+    <div id="dstage"></div>
+  </section>
+
+  <section id="effects" class="wrap block">
+    <div class="head">
+      <h2>Effects</h2>
+      <p>The building blocks inside the formats. Pick an effect to jump straight to it in the reel.</p>
+    </div>
+    <div class="tabs" id="etabs" role="tablist" aria-label="Effects reels"></div>
+    <div class="fx">
+      <div class="fxv" id="fxv"><video id="fxvideo" controls playsinline muted preload="metadata"></video></div>
+      <div class="fxl">
+        <input id="fxq" type="search" placeholder="Search effects (e.g. caption, split, counter)" aria-label="Search effects">
+        <ol id="fxlist"></ol>
+      </div>
+    </div>
+  </section>
+
+  <section id="start" class="wrap block">
+    <div class="head">
+      <h2>Start here</h2>
+      <p>Three steps from browsing to a finished video.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="num">1</span><h3>Pick a format</h3><p>Use the filters to find formats that fit what you already have. Tap ☆ to save the ones you like.</p></div>
+      <div class="step"><span class="num">2</span><h3>Choose a skin</h3><p>Open a skin to see it on footage and on an explainer stage. The skin you pick is added to your brief.</p></div>
+      <div class="step"><span class="num">3</span><h3>Copy your brief</h3><p>Open a format and tap <b>Copy brief</b>, or copy your whole shortlist. Fill in the blanks and send it over.</p></div>
+    </div>
+    <div class="cta">
+      <div><h3>Want one made for your business?</h3><p>Send your brief to the Earlibird team and we'll take it from there.</p></div>
+      <a class="btn" href="https://earlibird.ai" target="_blank" rel="noopener">earlibird.ai</a>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap foot">
+  <p>All examples were made by Earlibird. Sample numbers, names and businesses are illustrative. Videos are shown muted unless marked "Sound on".</p>
+</footer>
+
+<div class="tray" id="tray" hidden>
+  <span id="tray-n"></span>
+  <button class="btn sm" id="tray-copy">Copy shortlist brief</button>
+  <button class="linkbtn" id="tray-clear">Clear</button>
+</div>
+
+<dialog id="modal" aria-labelledby="m-name">
+  <div class="mwrap">
+    <button class="x" id="m-close" aria-label="Close">×</button>
+    <div class="mvid" id="m-vid"></div>
+    <div class="mbody">
+      <div class="mtags" id="m-tags"></div>
+      <h3 id="m-name"></h3>
+      <p class="mline" id="m-line"></p>
+      <dl class="mdl">
+        <dt>Good for</dt><dd id="m-good"></dd>
+        <dt>What you bring</dt><dd id="m-bring"></dd>
+      </dl>
+      <p class="mnote" id="m-note" hidden></p>
+      <div class="mact">
+        <button class="btn" id="m-copy">Copy brief</button>
+        <button class="chip" id="m-save" aria-pressed="false">☆ Save</button>
+        <button class="chip" id="m-extra" hidden></button>
+      </div>
+      <div class="mnav"><button class="linkbtn" id="m-prev">← Previous</button><button class="linkbtn" id="m-next">Next →</button></div>
+    </div>
+  </div>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script src="skins.js"></script>
+</body>
+</html>

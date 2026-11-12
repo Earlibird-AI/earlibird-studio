@@ -8,3 +8,11 @@
 > Commits you push to the connected branch sync back to AI Studio and show up in
 > the editor, so keep the branch in a working state.
 <!-- VIBE:END -->
+
+<!-- SHOWCASE:BEGIN -->
+## This project
+
+The site is a plain HTML/CSS/JS showcase in `public/showcase/` (no React, no build step). `src/routes/index.tsx`
+redirects `/` to `/showcase/index.html`. Edit content in `public/showcase/data.js`; keep each media file under 25 MB.
+Only Earlibird-made examples belong here: no client recordings or names, and no third-party reference material.
+<!-- SHOWCASE:END -->
