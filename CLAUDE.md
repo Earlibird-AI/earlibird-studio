@@ -18,6 +18,7 @@ The whole site is `public/showcase/`: plain HTML, CSS and JavaScript, no build s
 - [ ] Copy their logo into `public/showcase/media/brand/` and point `logo` and `icon` at it.
 - [ ] `accent`: their brand colour, if it reads on near-black. If it's dark, use a lighter tint. Set `recolorSkins: true` to show the skins in their colour.
 - [ ] `downloadUrl` and `repoUrl`: set to "" to hide the "Make your own" box, unless they want to share their own code.
+- [ ] `driveKitUrl` points to Earlibird's Drive folder kit. Keep it if they want visitors to see it, set it to their own kit, or set it to "" to hide the line.
 - [ ] If any Earlibird example videos remain, keep a credit in `footer`, for example "Some example videos by Earlibird (earlibird.ai)."
 - [ ] `README.md`: replace the title and intro with theirs.
 - [ ] Only if they use AI Studio: update the title and description in `src/routes/__root.tsx`.

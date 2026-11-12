@@ -26,6 +26,7 @@
   if (B.website) { $("#b-cta").href = B.website; setText("#b-cta", B.websiteLabel || B.website.replace(/^https?:\/\//, "")); } else $("#b-cta").hidden = true;
   if (B.downloadUrl) { $("#b-dl").href = B.downloadUrl; } else $("#own").hidden = true;
   if (B.repoUrl) $("#b-repo").href = B.repoUrl; else $("#b-repo").hidden = true;
+  if (B.driveKitUrl) $("#b-kit").href = B.driveKitUrl; else $("#b-kit-wrap").hidden = true;
   $("#own-copy").onclick = () => copy($("#own-prompt").textContent, "Prompt copied");
 
   $("#n-formats").textContent = D.formats.length;

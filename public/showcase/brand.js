@@ -33,4 +33,6 @@ window.BRAND = {
   // "Make your own" box in Start here. Set downloadUrl to "" to hide it.
   repoUrl: "https://github.com/Earlibird-AI/earlibird-studio",
   downloadUrl: "https://github.com/Earlibird-AI/earlibird-studio/archive/refs/heads/main.zip",
+  // Google Drive folder kit (folders, guide, templates) for running your own AI video workflow. "" hides the link.
+  driveKitUrl: "https://drive.google.com/drive/folders/1b8i3hR3aMaPbKizJHUO4G5-n1r9eQ1oD",
 };

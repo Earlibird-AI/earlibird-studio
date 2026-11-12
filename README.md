@@ -20,6 +20,8 @@ My videos are in the my-videos folder: add them to the page.
 
 Claude rebrands the page (`public/showcase/brand.js`), keeps the formats, skins and effects you want, and adds your videos with `scripts/add_video.py`. It compresses each video for the web, makes a poster and adds the card. `CLAUDE.md` has the full checklist.
 
+Want the whole workflow, from ideas to finished videos? Copy the [AI video system folder kit](https://drive.google.com/drive/folders/1b8i3hR3aMaPbKizJHUO4G5-n1r9eQ1oD) on Google Drive: folders, a step-by-step guide, Claude instructions and templates.
+
 Earlibird's example videos, logo and footage are included as references. Credit Earlibird if you keep them on a page you publish, or swap in your own.
 
 ## Look at it
