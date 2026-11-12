@@ -77,11 +77,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Earlibird Video Styles" },
-      { name: "description", content: "Browse Earlibird's video formats, brand skins and effects." },
+      { title: "Earlibird Shareable Video Studio" },
+      {
+        name: "description",
+        content: "Browse Earlibird's shareable video formats, brand skins, and effects.",
+      },
       { name: "author", content: "Earlibird AI" },
-      { property: "og:title", content: "Earlibird Video Styles" },
-      { property: "og:description", content: "Browse Earlibird's video formats, brand skins and effects." },
+      { property: "og:title", content: "Earlibird Shareable Video Studio" },
+      {
+        property: "og:description",
+        content: "Browse Earlibird's shareable video formats, brand skins, and effects.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

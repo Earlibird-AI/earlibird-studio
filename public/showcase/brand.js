@@ -19,8 +19,8 @@ window.BRAND = {
   recolorSkins: false,
 
   // Page text
-  pageTitle: "Earlibird Video Styles",
-  eyebrow: "Earlibird video styles",
+  pageTitle: "Earlibird Shareable Video Studio",
+  eyebrow: "Earlibird shareable video studio",
   heroTitle: "Pick your",
   heroItalic: "starting point",
   lede: "Every example on this page was made with Earlibird's video kits. Browse the formats, try the brand skins, scrub through the effects, then save the ones you like and copy a ready-to-fill brief.",
