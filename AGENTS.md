@@ -13,6 +13,6 @@
 ## This project
 
 The site is a plain HTML/CSS/JS showcase in `public/showcase/` (no React, no build step). `src/routes/index.tsx`
-redirects `/` to `/showcase/index.html`. Edit content in `public/showcase/data.js`; keep each media file under 25 MB.
+redirects `/` to `/showcase/index.html`. Rebrand in `public/showcase/brand.js`, edit content in `public/showcase/data.js`, add videos with `scripts/add_video.py` (see CLAUDE.md); keep each media file under 25 MB.
 Only Earlibird-made examples belong here: no client recordings or names, and no third-party reference material.
 <!-- SHOWCASE:END -->

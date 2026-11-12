@@ -4,6 +4,24 @@ A browsable showcase of Earlibird's video **formats**, **brand skins** and **eff
 
 Every example was made by Earlibird. Sample numbers, names and businesses in the examples are illustrative.
 
+## Make it yours with Claude
+
+1. Download this repo (**Code → Download ZIP** on GitHub) and unzip it.
+2. Put your own videos in the `my-videos/` folder.
+3. Open the folder in [Claude Code](https://claude.com/claude-code), or upload the zip to a Claude chat, and paste:
+
+```
+Read CLAUDE.md in this folder, then make this video showcase mine.
+My business: [name, website, what we do]
+My brand: [logo file, main colour]
+Keep: [all formats / just the ones I list]
+My videos are in the my-videos folder: add them to the page.
+```
+
+Claude rebrands the page (`public/showcase/brand.js`), keeps the formats, skins and effects you want, and adds your videos with `scripts/add_video.py`. It compresses each video for the web, makes a poster and adds the card. `CLAUDE.md` has the full checklist.
+
+Earlibird's example videos, logo and footage are included as references. Credit Earlibird if you keep them on a page you publish, or swap in your own.
+
 ## Look at it
 
 - **Live site:** the AI Studio subdomain this repo is published to.
@@ -53,6 +71,7 @@ The showcase is plain HTML, CSS and JavaScript with no build step:
 public/showcase/
   index.html   page structure
   styles.css   all styling
+  brand.js     business name, logo, colours and page text: edit this to rebrand
   data.js      formats, skins (design tokens) and effect timestamps: edit this to change content
   app.js       format grid, filters, shortlist, brief copy, effects reels
   skins.js     live skin previews
@@ -65,6 +84,13 @@ The rest of the repo is the GoHighLevel AI Studio project template (TanStack Sta
 
 ## Adding or changing an example
 
-1. Add a small web version of the video to `public/showcase/media/` as `<id>.mp4` (H.264, 720p, no more than about 10 MB, and always under 25 MB) plus a `<id>.jpg` poster.
-2. Add or edit its entry in `public/showcase/data.js`.
-3. Commit to `main`. AI Studio pulls the change and rebuilds the preview. Publish again to update the live subdomain.
+```bash
+python3 scripts/add_video.py my-videos/promo.mp4 --name "Spring promo" --line "What it is, in one sentence."
+python3 scripts/add_video.py my-videos/tour.mp4 --replace guided-tour     # your video as that format's example
+python3 scripts/add_video.py --remove why-it-worked                       # take a format off the page
+python3 scripts/add_video.py --list
+```
+
+The script needs [ffmpeg](https://ffmpeg.org) (Mac: `brew install ffmpeg`). It keeps every file under the 25 MB hosting limit and strips audio unless you pass `--sound`. Card text is in `public/showcase/data.js`.
+
+Hosted on AI Studio? Commit to `main`, let AI Studio pull the change, then publish again to update the live subdomain.

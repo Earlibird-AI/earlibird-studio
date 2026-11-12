@@ -18,6 +18,9 @@ You need the "Manage Git & download code" permission (Settings → Team → Perm
 
 ## 2. Load the showcase into that repo
 
+Run this from the folder you downloaded (this repo), pointing it at your new clone.
+
+
 1. Clone the new repo, for example in GitHub Desktop: File → Clone repository.
 2. From this folder, run the copy script against the clone:
 

@@ -10,6 +10,24 @@
   const media = (n, ext) => `media/${n}.${ext}`;
   const canHover = window.matchMedia("(hover:hover) and (pointer:fine)").matches;
 
+  /* brand (brand.js) */
+  const B = Object.assign({ name: "", accent: "#F3D053" }, window.BRAND || {});
+  const setText = (sel, v) => { if (v != null && $(sel)) $(sel).textContent = v; };
+  if (B.pageTitle) {
+    document.title = B.pageTitle;
+    document.querySelectorAll('meta[property="og:title"]').forEach((m) => m.setAttribute("content", B.pageTitle));
+  }
+  if (B.icon) document.querySelector('link[rel="icon"]').href = B.icon;
+  document.documentElement.style.setProperty("--y", B.accent);
+  $("#b-logo").innerHTML = B.logo ? `<img src="${esc(B.logo)}" alt="${esc(B.name)}" height="32">` : `<span class="txt">${esc(B.name)}</span>`;
+  $("#b-logo").setAttribute("aria-label", `${B.name}, back to top`);
+  setText("#b-eyebrow", B.eyebrow); setText("#b-h1", B.heroTitle); setText("#b-h1i", B.heroItalic); setText("#b-lede", B.lede);
+  setText("#b-cta-title", B.ctaTitle); setText("#b-cta-text", B.ctaText); setText("#b-footer", B.footer);
+  if (B.website) { $("#b-cta").href = B.website; setText("#b-cta", B.websiteLabel || B.website.replace(/^https?:\/\//, "")); } else $("#b-cta").hidden = true;
+  if (B.downloadUrl) { $("#b-dl").href = B.downloadUrl; } else $("#own").hidden = true;
+  if (B.repoUrl) $("#b-repo").href = B.repoUrl; else $("#b-repo").hidden = true;
+  $("#own-copy").onclick = () => copy($("#own-prompt").textContent, "Prompt copied");
+
   $("#n-formats").textContent = D.formats.length;
   $("#n-skins").textContent = D.skins.length;
   $("#n-effects").textContent = D.effects.reduce((a, e) => a + e.list.length, 0);
@@ -56,7 +74,7 @@
       `What I'll bring: ${f.bring}`,
     ].join("\n");
     return [
-      "EARLIBIRD VIDEO BRIEF",
+      B.briefTitle || `${(B.name || "").toUpperCase()} VIDEO BRIEF`,
       "",
       list.map(one).join("\n\n"),
       "",
@@ -105,8 +123,8 @@
 
   /* cards */
   const grid = $("#grid");
-  const posterOf = (f) => (f.clip ? f.id : f.id);
-  const srcOf = (f) => (f.clip ? f.clip.src : f.id);
+  const posterOf = (f) => f.poster || f.id;
+  const srcOf = (f) => (f.clip ? f.clip.src : f.src || f.id);
   grid.innerHTML = D.formats.map((f) => `
     <article class="card" data-id="${f.id}" tabindex="0" role="button" aria-label="Open ${esc(f.name)}">
       <div class="thumb ${f.aspect === "9:16" ? "tall" : ""}">
@@ -151,7 +169,7 @@
     const v = document.createElement("video");
     Object.assign(v, { controls: true, playsInline: true, autoplay: true, muted: !f.sound, loop: !clip, preload: "auto" });
     v.setAttribute("playsinline", "");
-    v.poster = media(f.clip && clip ? f.id : src, "jpg");
+    v.poster = media(clip ? posterOf(f) : src === srcOf(f) ? posterOf(f) : src, "jpg");
     v.src = media(src, "mp4") + (clip ? `#t=${clip.start},${clip.end}` : "");
     if (clip) v.addEventListener("timeupdate", () => { if (v.currentTime >= clip.end || v.currentTime < clip.start - 0.5) v.currentTime = clip.start; });
     box.appendChild(v);

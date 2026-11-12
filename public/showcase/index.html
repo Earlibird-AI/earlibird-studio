@@ -17,7 +17,7 @@
 </head>
 <body>
 <header class="top">
-  <a class="brand" href="#top" aria-label="Earlibird, back to top"><img src="media/brand/lockup-white.png" alt="earlibird" width="124" height="32"></a>
+  <a class="brand" id="b-logo" href="#top" aria-label="Back to top"><img src="media/brand/lockup-white.png" alt="earlibird" width="124" height="32"></a>
   <nav class="nav" aria-label="Sections">
     <a href="#formats">Formats</a><a href="#skins">Skins</a><a href="#effects">Effects</a><a href="#start">Start here</a>
   </nav>
@@ -25,9 +25,9 @@
 
 <main id="top">
   <section class="hero wrap">
-    <div class="eyebrow">Earlibird video styles</div>
-    <h1>Pick your <i>starting point</i></h1>
-    <p class="lede">Every example on this page was made with Earlibird's video kits. Browse the formats, try the brand skins, scrub through the effects, then save the ones you like and copy a ready-to-fill brief.</p>
+    <div class="eyebrow" id="b-eyebrow">Earlibird video styles</div>
+    <h1><span id="b-h1">Pick your</span> <i id="b-h1i">starting point</i></h1>
+    <p class="lede" id="b-lede">Every example on this page was made with Earlibird's video kits. Browse the formats, try the brand skins, scrub through the effects, then save the ones you like and copy a ready-to-fill brief.</p>
     <div class="stats"><span><b id="n-formats">13</b> formats</span><span><b id="n-skins">7</b> skins</span><span><b id="n-effects">114</b> effects</span></div>
   </section>
 
@@ -85,14 +85,35 @@
       <div class="step"><span class="num">3</span><h3>Copy your brief</h3><p>Open a format and tap <b>Copy brief</b>, or copy your whole shortlist. Fill in the blanks and send it over.</p></div>
     </div>
     <div class="cta">
-      <div><h3>Want one made for your business?</h3><p>Send your brief to the Earlibird team and we'll take it from there.</p></div>
-      <a class="btn" href="https://earlibird.ai" target="_blank" rel="noopener">earlibird.ai</a>
+      <div><h3 id="b-cta-title">Want one made for your business?</h3><p id="b-cta-text">Send your brief to the Earlibird team and we'll take it from there.</p></div>
+      <a class="btn" id="b-cta" href="https://earlibird.ai" target="_blank" rel="noopener">earlibird.ai</a>
+    </div>
+    <div class="own" id="own">
+      <div class="own-l">
+        <div class="eyebrow">Make your own</div>
+        <h3>Your business, your videos, this page</h3>
+        <p>Download the code and hand it to Claude. It rebrands the page for your business, keeps the formats, skins and effects you want, and adds your own videos.</p>
+        <ol class="own-steps">
+          <li>Download and unzip the starter.</li>
+          <li>Open the folder in Claude Code (or upload the zip to a Claude chat).</li>
+          <li>Paste the prompt below and answer Claude's questions.</li>
+        </ol>
+        <div class="own-btns"><a class="btn" id="b-dl" href="#">Download the starter (.zip)</a><a class="linkbtn" id="b-repo" href="#" target="_blank" rel="noopener">View the code on GitHub</a></div>
+      </div>
+      <div class="own-r">
+        <pre id="own-prompt">Read CLAUDE.md in this folder, then make this video showcase mine.
+My business: [name, website, what we do]
+My brand: [logo file, main colour]
+Keep: [all formats / just the ones I list]
+My videos are in the my-videos folder: add them to the page.</pre>
+        <button class="btn sm" id="own-copy">Copy prompt</button>
+      </div>
     </div>
   </section>
 </main>
 
 <footer class="wrap foot">
-  <p>All examples were made by Earlibird. Sample numbers, names and businesses are illustrative. Videos are shown muted unless marked "Sound on".</p>
+  <p id="b-footer">All examples were made by Earlibird. Sample numbers, names and businesses are illustrative. Videos are shown muted unless marked "Sound on".</p>
 </footer>
 
 <div class="tray" id="tray" hidden>
@@ -127,6 +148,7 @@
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="brand.js"></script>
 <script src="data.js"></script>
 <script src="app.js"></script>
 <script src="skins.js"></script>

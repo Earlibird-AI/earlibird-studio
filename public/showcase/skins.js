@@ -1,7 +1,17 @@
 /* Earlibird Video Styles: live skin previews. The same 6 s of footage and words in every skin, drawn in HTML/CSS
    with GSAP. Skin tokens come from data.js (window.SHOWCASE.skins). */
 (function () {
-  const SK = window.SHOWCASE.skins;
+  const BR = window.BRAND || {};
+  const hexA = (h, a) => { const n = parseInt(h.replace("#", ""), 16); return `rgba(${n >> 16 & 255},${n >> 8 & 255},${n & 255},${a})`; };
+  // brand.js recolorSkins: swap the skins' yellow for the brand accent
+  const SK = window.SHOWCASE.skins.map((s) => {
+    if (!BR.recolorSkins || !BR.accent) return s;
+    const y = /#F3D053/gi, c = JSON.parse(JSON.stringify(s));
+    c.ink.accent = BR.accent; if (/#F3D053/i.test(c.ring)) c.ring = BR.accent;
+    for (const k of ["highlight", "card_bg", "card_border", "bg"]) if (typeof c.stage[k] === "string") c.stage[k] = c.stage[k].replace(y, BR.accent).replace(/rgba\(243,208,83,([.\d]+)\)/g, (_, a) => hexA(BR.accent, a));
+    if (typeof c.ink.rim === "string") c.ink.rim = c.ink.rim.replace(/rgba\(243,208,83,([.\d]+)\)/g, (_, a) => hexA(BR.accent, a));
+    return c;
+  });
   const store = window.EB.store;
   const A = "media/skins/";
   const FONTS = ["Poppins", "Inter Tight", "Helvetica Neue", "Montserrat", "Space Grotesk", "Instrument Serif", "Anton"];
@@ -29,7 +39,7 @@
     const bw = s.big_word.font !== "none" && cut && alphaOK;
     return `<video class="bg" src="${A}chris-bg.mp4" muted playsinline loop autoplay></video>
       ${bw ? `<div class="L"><div class="big">done${s.period ? '<span class="p">.</span>' : ""}</div></div><video class="fg" src="${A}chris-fg.webm" muted playsinline loop autoplay></video>` : ""}
-      <div class="L"><div class="scrim"></div><div class="mk">Earlibird.ai</div>
+      <div class="L"><div class="scrim"></div><div class="mk">${BR.skinKicker || BR.name || ""}</div>
        <div class="hl"><div class="l1">${words("Heads down,")}</div><div class="l2w"><div class="l2"><span class="mark"><b></b>${words("getting it done")}</span>${s.period ? '<span class="dot">.</span>' : ""}</div></div></div>
        <div class="stat"><span class="lab">Hours back a week</span><span class="n">0</span><span class="u">hrs</span></div>
        <div class="cap"></div></div>`;
@@ -146,7 +156,7 @@
        <div class="eyebrow" style="margin-top:12px">Explainer stage</div><div class="sw">${sw(s.stage.bg, "stage")}${sw(s.stage.text, "text")}${sw(s.stage.highlight, "highlight")}${sw(s.stage.card_bg, "card")}</div></div>
       <div class="box spec"><div class="eyebrow">Type</div>
        <div class="a" style="font-family:'${f.head}';font-weight:${s.fonts.head_weight};text-transform:${s.fonts.head_case}">Headline</div><div class="b">headlines, numbers, chips · ${f.head}</div>
-       <div class="a" style="font-family:'${f.caption}';font-weight:${s.fonts.caption_weight};font-size:22px">Caption, readable at a glance${s.period ? '<span style="color:var(--y)">.</span>' : ""}</div><div class="b">captions · ${f.caption}</div>
+       <div class="a" style="font-family:'${f.caption}';font-weight:${s.fonts.caption_weight};font-size:22px">Caption, readable at a glance${s.period ? '<span style="color:${s.ink.accent}">.</span>' : ""}</div><div class="b">captions · ${f.caption}</div>
        <div class="a" style="font-family:'${f.serif}';font-style:${/Serif/.test(f.serif) ? "italic" : "normal"}">big words</div><div class="b">big words and punch lines · ${f.serif}</div>
        <div class="fonts"><label>Headline font<select data-k="head">${opt(f.head, s.fonts.head)}</select></label><label>Caption font<select data-k="caption">${opt(f.caption, s.fonts.caption)}</select></label>
         <label>Big-word font<select data-k="serif">${opt(f.serif, s.fonts.serif)}</select></label><label>&nbsp;<button class="tab" id="reset" style="padding:6px 10px">Reset fonts</button></label></div></div>

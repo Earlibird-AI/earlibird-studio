@@ -31,3 +31,7 @@ src/tailwind.config.vibe.json
 *.njsproj
 *.sln
 *.sw?
+
+# raw videos dropped in for scripts/add_video.py (compressed copies live in public/showcase/media)
+my-videos/*
+!my-videos/README.md
