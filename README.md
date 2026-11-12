@@ -77,6 +77,7 @@ public/showcase/
   data.js      formats, skins (design tokens) and effect timestamps: edit this to change content
   app.js       format grid, filters, shortlist, brief copy, effects reels
   skins.js     live skin previews
+  media.js     video loading that also works on hosts without byte-range support (e.g. AI Studio)
   media/       web-compressed example videos (.mp4) and posters (.jpg)
 ```
 

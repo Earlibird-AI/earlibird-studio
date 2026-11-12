@@ -26,6 +26,7 @@
   const PC = [[0, 6], [6, 11], [11, 15], [15, 18]];
   let clocks = [], stageTL = null;
 
+  const loadVideos = (root) => root.querySelectorAll("video[data-src]").forEach((v) => window.EBMedia.set(v, v.dataset.src));
   const fontsOf = (s) => Object.assign({}, s.fonts, store.get("fonts-" + s.id, {}));
   function vars(el, s) {
     const f = fontsOf(s), i = s.ink, g = s.stage;
@@ -37,8 +38,8 @@
   const words = (t) => t.split(" ").map((w) => `<span class="w">${w}</span>`).join(" ");
   function phoneHTML(s, cut) {
     const bw = s.big_word.font !== "none" && cut && alphaOK;
-    return `<video class="bg" src="${A}chris-bg.mp4" muted playsinline loop autoplay></video>
-      ${bw ? `<div class="L"><div class="big">done${s.period ? '<span class="p">.</span>' : ""}</div></div><video class="fg" src="${A}chris-fg.webm" muted playsinline loop autoplay></video>` : ""}
+    return `<video class="bg" data-src="${A}chris-bg.mp4" muted playsinline loop autoplay></video>
+      ${bw ? `<div class="L"><div class="big">done${s.period ? '<span class="p">.</span>' : ""}</div></div><video class="fg" data-src="${A}chris-fg.webm" muted playsinline loop autoplay></video>` : ""}
       <div class="L"><div class="scrim"></div><div class="mk">${BR.skinKicker || BR.name || ""}</div>
        <div class="hl"><div class="l1">${words("Heads down,")}</div><div class="l2w"><div class="l2"><span class="mark"><b></b>${words("getting it done")}</span>${s.period ? '<span class="dot">.</span>' : ""}</div></div></div>
        <div class="stat"><span class="lab">Hours back a week</span><span class="n">0</span><span class="u">hrs</span></div>
@@ -47,7 +48,7 @@
   function makePhone(s, cut) {
     const el = document.createElement("div");
     el.className = `phone cap-${s.caption.mode} hl-${s.headline.mode} card-${s.card.mode} big-${s.big_word.font}`;
-    vars(el, s); el.innerHTML = phoneHTML(s, cut); return el;
+    vars(el, s); el.innerHTML = phoneHTML(s, cut); loadVideos(el); return el;
   }
   function phoneTL(root, s) {
     const q = (x) => root.querySelector(x), qa = (x) => root.querySelectorAll(x); const tl = gsap.timeline({ paused: true });
@@ -118,7 +119,7 @@
   }
   function stageHTML(s) {
     return `<div class="stage ${s.stage.dark ? "dark" : ""}">
-      <div class="s spk"><video src="${A}chris-bg.mp4" muted playsinline loop autoplay></video><div class="ring"></div></div>
+      <div class="s spk"><video data-src="${A}chris-bg.mp4" muted playsinline loop autoplay></video><div class="ring"></div></div>
       <div class="s pk">Lead responder</div>
       <div class="s ph">Every lead gets a reply in <span class="mark"><b></b>60 seconds</span>${s.period ? '<span class="dot">.</span>' : ""}</div>
       <div class="s win"><div class="bar"><i></i><i></i><i></i></div><img src="${A}screen.png" alt="A sales pipeline board with sample deals"></div>
@@ -128,7 +129,7 @@
   }
   function buildStage(s) {
     const d = document.getElementById("dstage"); if (stageTL) { stageTL.tl.kill(); stageTL = null; }
-    d.innerHTML = stageHTML(s); const r = d.firstElementChild; vars(r, s);
+    d.innerHTML = stageHTML(s); const r = d.firstElementChild; vars(r, s); loadVideos(r);
     if (io) io.observe(r);
     const q = (x) => r.querySelector(x); const pt = gsap.timeline({ repeat: -1, repeatDelay: .2 });
     gsap.set([q(".pk"), q(".ph"), q(".win"), q(".chip2"), q(".note")], { opacity: 0 });

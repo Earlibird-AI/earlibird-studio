@@ -151,13 +151,14 @@
         if (!v) {
           v = document.createElement("video");
           Object.assign(v, { muted: true, loop: !f.clip, playsInline: true, preload: "auto" });
-          v.src = media(srcOf(f), "mp4") + (f.clip ? `#t=${f.clip.start},${f.clip.end}` : "");
           if (f.clip) v.addEventListener("timeupdate", () => { if (v.currentTime >= f.clip.end) v.currentTime = f.clip.start; });
           th.appendChild(v);
+          v._ready = EBMedia.set(v, media(srcOf(f), "mp4"), f.clip);
         }
-        v.play().catch(() => {});
+        v._hover = true;
+        v._ready.then(() => { if (v._hover) v.play().catch(() => {}); });
       });
-      card.addEventListener("mouseleave", () => { if (v) v.pause(); });
+      card.addEventListener("mouseleave", () => { if (v) { v._hover = false; v.pause(); } });
     }
   });
 
@@ -171,10 +172,10 @@
     Object.assign(v, { controls: true, playsInline: true, autoplay: true, muted: !f.sound, loop: !clip, preload: "auto" });
     v.setAttribute("playsinline", "");
     v.poster = media(clip ? posterOf(f) : src === srcOf(f) ? posterOf(f) : src, "jpg");
-    v.src = media(src, "mp4") + (clip ? `#t=${clip.start},${clip.end}` : "");
     if (clip) v.addEventListener("timeupdate", () => { if (v.currentTime >= clip.end || v.currentTime < clip.start - 0.5) v.currentTime = clip.start; });
     box.appendChild(v);
-    v.play().catch(() => { v.muted = true; v.play().catch(() => {}); });
+    v.autoplay = false;   // play once the source is attached; fall back to muted if the browser blocks sound
+    EBMedia.set(v, media(src, "mp4"), clip).then((ok) => { if (ok) v.play().catch(() => { v.muted = true; v.play().catch(() => {}); }); });
     curSrc = src;
   }
   function openModal(id) {
@@ -261,7 +262,8 @@
     $("#etabs").querySelectorAll(".tab").forEach((b) => b.setAttribute("aria-selected", b.dataset.id === id));
     $(".fx").classList.toggle("tall", reel.aspect === "9:16");
     fxv.poster = media(reel.src, "jpg");
-    fxv.src = media(reel.src, "mp4");
+    fxv.removeAttribute("src"); fxv.load();
+    EBMedia.set(fxv, media(reel.src, "mp4"));
     renderList();
   }
   fxv.addEventListener("timeupdate", markFx);

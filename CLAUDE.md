@@ -61,6 +61,7 @@ public/showcase/brand.js     business name, logo, colours, page text
 public/showcase/data.js      formats, skins, effects (content)
 public/showcase/app.js       format grid, filters, shortlist, brief, effects
 public/showcase/skins.js     live skin previews
+public/showcase/media.js     video loading (works on hosts without byte-range support)
 public/showcase/styles.css   styling
 public/showcase/media/       videos (.mp4), posters (.jpg), brand/, skins/
 my-videos/                   drop raw videos here (not uploaded to git)
