@@ -1,0 +1,118 @@
+/* Earlibird chat widget — dark theme to match the showcase. Yellow accent only. */
+#eb-chat{position:fixed;inset:0 auto auto auto;font-family:var(--sans);z-index:60}
+#eb-chat .eb-launch{
+  position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));
+  display:flex;align-items:center;gap:12px;cursor:pointer;border:0;background:none;padding:0;
+}
+#eb-chat .eb-launch .eb-teaser{
+  display:none;align-items:center;gap:8px;max-width:260px;background:var(--panel);border:1px solid var(--line2);
+  border-radius:14px;padding:10px 14px;font-size:14px;font-weight:600;color:var(--bone);box-shadow:0 12px 30px -12px rgba(0,0,0,.6);
+}
+#eb-chat .eb-launch .eb-teaser b{font-weight:800}
+#eb-chat .eb-launch .eb-teaser .eb-x{margin-left:auto;color:var(--mute);font-size:18px;line-height:1;cursor:pointer}
+#eb-chat .eb-launch .eb-fab{
+  width:56px;height:56px;border-radius:50%;background:var(--y);color:#111;display:grid;place-items:center;
+  box-shadow:0 10px 24px -6px rgba(0,0,0,.5);transition:transform .15s ease
+}
+#eb-chat .eb-launch .eb-fab:hover{transform:translateY(-2px)}
+#eb-chat .eb-launch .eb-fab svg{width:26px;height:26px}
+#eb-chat .eb-launch .eb-badge{
+  position:absolute;top:-4px;right:-4px;min-width:20px;height:20px;padding:0 5px;border-radius:10px;
+  background:#e2594b;color:#fff;font:700 11px/20px var(--sans);text-align:center;display:none
+}
+#eb-chat.open .eb-teaser{display:none}
+@media (min-width:560px){#eb-chat:not(.open) .eb-launch:hover .eb-teaser,#eb-chat.show-teaser:not(.open) .eb-teaser{display:flex}}
+@media (max-width:559px){#eb-chat.show-teaser:not(.open) .eb-teaser{display:flex}}
+
+#eb-chat .eb-panel{
+  position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));
+  width:min(384px,calc(100vw - 32px));height:min(640px,calc(100dvh - 7rem));
+  display:none;flex-direction:column;background:var(--panel);border:1px solid var(--line2);
+  border-radius:18px;overflow:hidden;box-shadow:0 24px 60px -16px rgba(0,0,0,.7)
+}
+#eb-chat.open .eb-panel{display:flex}
+#eb-chat .eb-head{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--line);background:var(--panel2)}
+#eb-chat .eb-head .eb-av{width:34px;height:34px;border-radius:50%;background:var(--y);color:#111;display:grid;place-items:center;font-weight:800;font-size:14px}
+#eb-chat .eb-head h3{margin:0;font:800 16px/1.2 var(--sans);color:var(--bone)}
+#eb-chat .eb-head .eb-sub{font:600 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+#eb-chat .eb-head .eb-close{margin-left:auto;background:none;border:0;color:var(--mute);font-size:22px;line-height:1;cursor:pointer;padding:4px;border-radius:8px}
+#eb-chat .eb-head .eb-close:hover{color:var(--bone);background:var(--line2)}
+
+#eb-chat .eb-body{flex:1;min-height:0;display:flex;flex-direction:column;position:relative}
+#eb-chat .eb-thread{flex:1;min-height:0;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px}
+#eb-chat .eb-status{font-size:12px;color:var(--mute);text-align:center;padding:6px}
+#eb-chat .eb-status.err{color:#e8a}
+
+#eb-chat .eb-msg{max-width:82%;font-size:14px;line-height:1.45;word-wrap:break-word}
+#eb-chat .eb-msg .eb-bub{padding:9px 13px;border-radius:14px}
+#eb-chat .eb-msg.in .eb-bub{background:var(--panel2);border:1px solid var(--line2);border-top-left-radius:4px;color:var(--bone)}
+#eb-chat .eb-msg.out{align-self:flex-end}
+#eb-chat .eb-msg.out .eb-bub{background:var(--y);color:#111;border-top-right-radius:4px}
+#eb-chat .eb-msg.sys{align-self:center;max-width:90%}
+#eb-chat .eb-msg.sys .eb-bub{background:none;color:var(--mute);font-size:12px;text-align:center;padding:2px}
+#eb-chat .eb-msg.pending .eb-bub{opacity:.5}
+#eb-chat .eb-msg.failed .eb-bub{border:1px solid #e2594b}
+#eb-chat .eb-msg .eb-time{font-size:10px;color:var(--mute);margin-top:3px}
+#eb-chat .eb-msg.out .eb-time{text-align:right}
+#eb-chat .eb-msg .eb-retry{font-size:12px;color:#e8a;cursor:pointer;text-decoration:underline;margin-top:3px}
+#eb-chat .eb-att{margin-top:6px;display:flex;flex-direction:column;gap:4px}
+#eb-chat .eb-att img{max-width:100%;border-radius:8px}
+#eb-chat .eb-att video,#eb-chat .eb-att audio{max-width:100%}
+#eb-chat .eb-att a{font-size:13px;color:var(--y);text-decoration:underline}
+
+#eb-chat .eb-typing{display:flex;gap:4px;padding:4px 13px}
+#eb-chat .eb-typing span{width:6px;height:6px;border-radius:50%;background:var(--mute);animation:ebdot 1.2s infinite}
+#eb-chat .eb-typing span:nth-child(2){animation-delay:.2s}
+#eb-chat .eb-typing span:nth-child(3){animation-delay:.4s}
+@keyframes ebdot{0%,60%,100%{opacity:.3}30%{opacity:1}}
+
+#eb-chat .eb-quick{display:flex;flex-wrap:wrap;gap:6px;padding:0 14px 12px}
+#eb-chat .eb-quick button{background:transparent;border:1px solid var(--line2);border-radius:999px;color:var(--bone);font:600 13px var(--sans);padding:7px 12px;cursor:pointer}
+#eb-chat .eb-quick button:hover{border-color:var(--y);color:var(--y)}
+
+#eb-chat .eb-card{margin:0 14px 14px;padding:14px;border:1px solid var(--line2);border-radius:12px;background:var(--panel2)}
+#eb-chat .eb-card h4{margin:0 0 8px;font:700 14px var(--sans);color:var(--bone)}
+#eb-chat .eb-card p{margin:0 0 10px;font-size:13px;color:var(--mute)}
+#eb-chat .eb-card .eb-thumbs{display:flex;gap:10px}
+#eb-chat .eb-card .eb-thumbs button{flex:1;background:var(--panel);border:1px solid var(--line2);border-radius:10px;padding:10px;cursor:pointer;color:var(--bone);font-size:14px}
+#eb-chat .eb-card .eb-thumbs button:hover{border-color:var(--y)}
+#eb-chat .eb-card .eb-btn{display:inline-flex;background:var(--y);color:#111;border:0;border-radius:999px;padding:9px 16px;font-weight:800;font-size:14px;cursor:pointer}
+
+#eb-chat .eb-form{display:flex;flex-direction:column;gap:10px}
+#eb-chat .eb-form label{font:700 12px var(--sans);color:var(--bone)}
+#eb-chat .eb-form .eb-field{display:flex;flex-direction:column;gap:5px}
+#eb-chat .eb-form input,#eb-chat .eb-form textarea,#eb-chat .eb-form select{
+  background:var(--page);border:1px solid var(--line2);border-radius:10px;color:var(--bone);font:14px var(--sans);
+  padding:10px 12px;outline:none
+}
+#eb-chat .eb-form input:focus,#eb-chat .eb-form textarea:focus{border-color:var(--y)}
+#eb-chat .eb-form textarea{resize:vertical;min-height:64px}
+#eb-chat .eb-form .eb-err{font-size:12px;color:#e8a}
+#eb-chat .eb-form .eb-consent{display:flex;gap:8px;align-items:flex-start;font-size:12px;color:var(--mute)}
+#eb-chat .eb-form .eb-consent input{margin-top:2px}
+#eb-chat .eb-form .eb-phone{display:flex;gap:6px}
+#eb-chat .eb-form .eb-phone .eb-dial{background:var(--page);border:1px solid var(--line2);border-radius:10px;color:var(--bone);padding:10px 12px;cursor:pointer;font-size:14px}
+#eb-chat .eb-form .eb-phone input{flex:1}
+#eb-chat .eb-countries{position:absolute;z-index:70;max-height:230px;overflow-y:auto;background:var(--panel2);border:1px solid var(--line2);border-radius:10px;box-shadow:0 12px 30px -12px rgba(0,0,0,.6);padding:6px;width:240px}
+#eb-chat .eb-countries input{width:100%;background:var(--page);border:1px solid var(--line2);border-radius:8px;color:var(--bone);padding:8px;font-size:13px;margin-bottom:6px}
+#eb-chat .eb-countries .eb-co{padding:7px 10px;border-radius:6px;cursor:pointer;font-size:13px;color:var(--bone);display:flex;justify-content:space-between}
+#eb-chat .eb-countries .eb-co:hover,#eb-chat .eb-countries .eb-co.sel{background:var(--line2)}
+
+#eb-chat .eb-compose{display:flex;align-items:flex-end;gap:8px;padding:10px 12px;border-top:1px solid var(--line)}
+#eb-chat .eb-compose .eb-clip{background:none;border:0;color:var(--mute);cursor:pointer;padding:6px;border-radius:8px;display:grid;place-items:center}
+#eb-chat .eb-compose .eb-clip:hover{color:var(--bone);background:var(--panel2)}
+#eb-chat .eb-compose .eb-clip svg{width:20px;height:20px}
+#eb-chat .eb-compose textarea{flex:1;resize:none;background:var(--page);border:1px solid var(--line2);border-radius:12px;color:var(--bone);font:14px var(--sans);padding:10px 12px;max-height:120px;outline:none}
+#eb-chat .eb-compose textarea:focus{border-color:var(--y)}
+#eb-chat .eb-compose .eb-send{background:var(--y);color:#111;border:0;border-radius:50%;width:38px;height:38px;flex:0 0 auto;cursor:pointer;display:grid;place-items:center}
+#eb-chat .eb-compose .eb-send:disabled{opacity:.4;cursor:not-allowed}
+#eb-chat .eb-compose .eb-send svg{width:18px;height:18px}
+#eb-chat .eb-chips{display:flex;flex-wrap:wrap;gap:6px;padding:0 12px 8px}
+#eb-chat .eb-chip{display:inline-flex;align-items:center;gap:6px;background:var(--panel2);border:1px solid var(--line2);border-radius:999px;padding:5px 10px;font-size:12px;color:var(--bone)}
+#eb-chat .eb-chip .eb-prog{width:34px;height:4px;background:var(--line2);border-radius:2px;overflow:hidden}
+#eb-chat .eb-chip .eb-prog i{display:block;height:100%;background:var(--y)}
+#eb-chat .eb-chip .eb-rm{cursor:pointer;color:var(--mute);font-size:14px;line-height:1}
+#eb-chat .eb-chip .eb-rm:hover{color:#e8a}
+#eb-chat .eb-chip.fail{border-color:#e2594b}
+#eb-chat .eb-loadold{text-align:center;padding:8px}
+#eb-chat .eb-loadold button{background:none;border:0;color:var(--y);font:600 13px var(--sans);cursor:pointer;text-decoration:underline}
